@@ -1,151 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GreenLight Garden Solutions</title>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; scroll-behavior:smooth;}
-    body {display:flex; min-height:100vh; background:#f4f9f4; color:#333;}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GreenLight Garden Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--green:#2d5016;--lime:#4CAF50;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;color:#333;background:#fff;line-height:1.6}
+section{padding:80px 20px}
+h2{text-align:center;font-size:2.5rem;color:var(--green);margin-bottom:50px}
+.btn{display:inline-block;padding:14px 32px;background:var(--lime);color:#fff;border-radius:50px;font-weight:600;text-decoration:none;transition:.3s}
+.btn:hover{background:#45a049;transform:translateY(-2px)}
 
-    /* Sidebar */
-    .sidebar {
-      width:250px; background:#2e7d32; color:white; padding:20px;
-      display:flex; flex-direction:column; justify-content:space-between;
-      position:fixed; top:0; bottom:0; left:0;
-    }
-    .sidebar h2 {text-align:center; margin-bottom:30px; font-size:22px;}
-    .sidebar nav a {
-      display:block; color:white; text-decoration:none; padding:12px;
-      border-radius:8px; margin:5px 0; transition:0.3s;
-    }
-    .sidebar nav a:hover {background:#1b5e20;}
-    .contact p {margin:10px 0;}
-    .contact a {color:#ffd600; text-decoration:none;}
+/* --- BANNER --- */
+.banner{position:relative;height:100vh;background:url('https://i.ibb.co/MxdnqFz6/igor-son-FV-Px-Cqgtwc-unsplash.jpg') center/cover;color:#fff}
+.banner::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(45,80,22,.75),rgba(76,175,80,.55))}
+.banner-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.banner h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem}
+.banner ul{list-style:none;font-size:1.15rem;line-height:1.9}
+.banner-logo{position:absolute;top:20px;left:20px;z-index:10;width:120px;height:120px;opacity:1}
 
-    /* Main Content */
-    .content {margin-left:250px; flex:1;}
+/* --- MAP --- */
+.map-wrapper{max-width:900px;margin:0 auto;border-radius:10px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.2)}
 
-    /* Banner */
-    .banner {
-      height:100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('https://images.unsplash.com/photo-1591089910803-3a38d0c29991?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; text-align:center;
-    }
-    .banner h1 {font-size:50px; margin-bottom:20px;}
-    .banner p {font-size:20px;}
-    .btn {background:#28a745; color:white; padding:12px 25px; border-radius:25px; text-decoration:none; font-weight:600; margin-top:15px; display:inline-block;}
-    .btn:hover {background:#218838;}
+/* --- WHY CHOOSE US --- */
+.why{display:grid;gap:30px;max-width:1000px;margin:0 auto;text-align:center;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.why div{background:#fff;padding:30px 20px;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.why h3{color:var(--lime);margin-bottom:10px;font-size:1.3rem}
 
-    /* Services Section */
-    section {padding:60px 40px;}
-    h2 {text-align:center; margin-bottom:40px; color:#2e7d32; font-size:32px;}
-    .service-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:25px;}
-    .card {
-      background:white; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1);
-      padding:20px; transition:0.3s; text-align:center;
-    }
-    .card:hover {transform:translateY(-8px);}
-    .card img {width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px;}
-    .card h3 {margin-bottom:10px; color:#1b5e20;}
-    .card p {font-size:15px; color:#444;}
+/* --- FAQ --- */
+.faq{max-width:800px;margin:0 auto}
+details{background:#fff;border:1px solid #eee;border-radius:8px;margin-bottom:15px;padding:20px}
+summary{font-weight:700;color:var(--green);cursor:pointer}
+details[open]{background:#fafffe}
 
-    /* Enquiry Form */
-    .form-container {background:#f0f7f1; padding:30px; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); max-width:600px; margin: auto;}
-    form {display:flex; flex-direction:column;}
-    form input, form textarea {margin:10px 0; padding:12px; border:1px solid #ccc; border-radius:8px;}
-    form button {background:#28a745; color:white; padding:12px; border:none; border-radius:25px; cursor:pointer; font-size:1rem;}
-    form button:hover {background:#218838;}
+/* --- CONTACT & FOOTER --- */
+.contact{background:#f8f9fa}
+form{max-width:600px;margin:0 auto 40px}
+form .field{margin-bottom:15px}
+form label{display:block;margin-bottom:5px;font-weight:600;color:var(--green)}
+form input,form textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:5px}
+form button{width:100%;padding:15px;background:var(--lime);color:#fff;border:none;border-radius:5px;font-weight:600;cursor:pointer;transition:.3s}
+form button:hover{background:#45a049}
+.contact-info{display:flex;justify-content:center;gap:30px;margin-top:20px;font-weight:600}
+.contact-info a{color:var(--green);text-decoration:none}
+footer{background:var(--green);color:#fff;text-align:center;padding:30px 20px}
+footer a{color:#fff;text-decoration:underline}
 
-    /* Footer */
-    footer {background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px;}
-
-    /* Responsive */
-    @media(max-width:768px){.sidebar{width:200px;} .content{margin-left:200px;} .banner h1{font-size:36px;}}
-    @media(max-width:500px){.sidebar{position:relative; width:100%; flex-direction:row;} .content{margin-left:0;}}
-  </style>
+/* --- WIDGETS --- */
+.widgets{position:fixed;right:20px;bottom:20px;z-index:999;display:flex;flex-direction:column;gap:10px}
+.widgets a{display:block;width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25);display:grid;place-items:center;transition:.3s}
+.widgets a:hover{transform:scale(1.1)}
+.widgets svg{width:26px;height:26px}
+@media(max-width:600px){.banner h1{font-size:2.5rem}.contact-info{flex-direction:column;gap:10px}}
+</style>
 </head>
+
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
+<!-- ========== BANNER ========== -->
+<section class="banner">
+  <!-- transparent logo top-left -->
+ <!-- new logo -->
+<img class="banner-logo" src="https://i.ibb.co/tTs5FZY9/green-light-logo.png" alt="GreenLight Logo">
+
+  <div class="banner-content">
+    <h1>GreenLight Garden Solutions</h1>
+    <ul>
+      <li>Lawn Mowing & Grass Cutting</li>
+      <li>Hedge Trimming & Strimming</li>
+      <li>Brush-Cutting & Mulching</li>
+      <li>Leaf Blowing & Weed Removal</li>
+      <li>Garden Clearance & Seasonal Clean-Ups</li>
+      <li>Year-Round Garden Maintenance</li>
+    </ul>
+    <a href="#contact" class="btn">Get a Free Quote</a>
+  </div>
+</section>
+
+<!-- ========== WHERE WE WORK (MAP) ========== -->
+<section id="services">
+  <h2>Where We Work</h2>
+  <div class="map-wrapper">
+   <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.5020797335!2d-1.985576!3d52.486243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc4cd0d0c0c1%3A0x8e6b0a12352e74f6!2sBirmingham%20City%20Centre%2C%20Birmingham!5e0!3m2!1sen!2suk!4v1700000000000"
+  width="100%"
+  height="400"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE US ========== -->
+<section style="background:#f8f9fa">
+  <h2>Why Choose Us?</h2>
+  <div class="why">
     <div>
-      <h2>GreenLight Garden</h2>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#enquiry">Enquiry</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <h3>Local Experts</h3>
+      <p>Operating across the UK with local teams who know your soil and seasons.</p>
     </div>
-    <div class="contact" id="contact">
-      <p><a href="tel:+919876543210">📞 +91 98765 43210</a></p>
-      <p><a href="mailto:info@greenlightgarden.com">✉ info@greenlightgarden.com</a></p>
+    <div>
+      <h3>100 % Satisfaction</h3>
+      <p>We’re not happy until you’re delighted—guaranteed workmanship on every visit.</p>
+    </div>
+    <div>
+      <h3>Eco-Friendly</h3>
+      <p>From electric tools to peat-free compost, we protect your garden and the planet.</p>
+    </div>
+    <div>
+      <h3>Free Quotes</h3>
+      <p>No hidden fees. Transparent pricing and tailored plans for every budget.</p>
     </div>
   </div>
+</section>
 
-  <!-- Main Content -->
-  <div class="content">
-
-    <!-- Banner -->
-    <section class="banner" id="home">
-      <h1>GreenLight Garden Solutions</h1>
-      <p>Lawn & Gardening Experts for a Beautiful Outdoor Space</p>
-      <a href="#enquiry" class="btn">Request a Quote</a>
-    </section>
-
-    <!-- Services -->
-    <section id="services">
-      <h2>Our Services</h2>
-      <div class="service-grid">
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lawn Mowing"><h3>Lawn Mowing</h3><p>Keep your lawn neat, healthy, and green all year round.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1618917009754-6a041a84129f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hedge Trimming"><h3>Hedge Trimming</h3><p>Shape and maintain hedges for a clean and modern garden look.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1504297050568-910d24c9f3c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grass Cutting"><h3>Grass Cutting</h3><p>Professional grass cutting for a healthy, even turf.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Strimming"><h3>Strimming</h3><p>Remove overgrown edges and hard-to-reach areas efficiently.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1615486367051-5aa2d7a7b79e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Brush Cutter"><h3>Brush Cutter</h3><p>Professional brush cutting for rough garden areas.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1601077093974-6a73ab6090b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mulching"><h3>Mulching</h3><p>Improve soil quality and plant growth with our mulching services.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Leaf Blowing"><h3>Leaf Blowing</h3><p>Quick removal of leaves for a tidy garden space.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1587324438673-d7f1a79c3f5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Weed Removal"><h3>Weed Removal</h3><p>Safe and effective removal of weeds to protect your plants.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1597755137466-9e3bbcbfd39d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Clearance"><h3>Garden Clearance</h3><p>Clear out old plants and debris for a fresh garden start.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1605251803921-b3bb7d1cf5de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Services"><h3>General Garden Services</h3><p>Complete care for your garden, tailored to your needs.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Seasonal Clean Up"><h3>Seasonal Clean Up</h3><p>Spring, summer, or fall – we clean up and prepare your garden.</p></div>
-
-        <div class="card"><img src="https://images.unsplash.com/photo-1605647540945-60ee1f0ccfbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Maintenance"><h3>Garden Maintenance</h3><p>Regular care to keep your outdoor space flourishing year-round.</p></div>
-
-      </div>
-    </section>
-
-    <!-- Enquiry Form -->
-    <section id="enquiry">
-      <h2>Enquiry Form</h2>
-      <div class="form-container">
-        <form action="mailto:info@greenlightgarden.com" method="post" enctype="text/plain">
-          <input type="text" name="Name" placeholder="Your Name" required>
-          <input type="email" name="Email" placeholder="Your Email" required>
-          <input type="tel" name="Phone" placeholder="Your Phone" required>
-          <textarea name="Message" rows="5" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Enquiry</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>© 2025 GreenLight Garden Solutions | All Rights Reserved</p>
-    </footer>
-
+<!-- ========== FAQ ========== -->
+<section>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <details>
+      <summary>What areas do you cover?</summary>
+      <p>We serve the entire UK mainland. Use the map above or call us to confirm your postcode.</p>
+    </details>
+    <details>
+      <summary>How often should my lawn be mowed?</summary>
+      <p>Typically once a week during growing season (Mar-Oct) and fortnightly in winter. We’ll adjust to your grass type.</p>
+    </details>
+    <details>
+      <summary>Are you insured?</summary>
+      <p>Yes—full public-liability insurance for your peace of mind.</p>
+    </details>
+    <details>
+      <summary>Can I book a one-off service?</summary>
+      <p>Absolutely. One-off cuts, clearances and seasonal tidy-ups are available.</p>
+    </details>
   </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="contact">
+  <h2>Get a Free Quote</h2>
+  <form action="mailto:sales@greenlightgardensolutions.co.uk" method="post" enctype="text/plain">
+    <div class="field"><label>Name</label><input type="text" name="name" required></div>
+    <div class="field"><label>Email</label><input type="email" name="email" required></div>
+    <div class="field"><label>Phone</label><input type="tel" name="phone"></div>
+    <div class="field"><label>Message</label><textarea name="message" required></textarea></div>
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="contact-info">
+    <a href="tel:+441234567890">📞 +44 123 456 7890</a>
+    <a href="mailto:sales@greenlightgardensolutions.co.uk">📧 sales@greenlightgardensolutions.co.uk</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <p>
+    © 2025 GreenLight Garden Solutions | All Rights Reserved<br>
+    <a href="mailto:sales@greenlightgardensolutions.co.uk">sales@greenlightgardensolutions.co.uk</a> |
+    <a href="tel:+441234567890">+44 123 456 7890</a>
+  </p>
+</footer>
+<!-- ===== FLOATING WIDGETS ===== -->
+<div class="widgets">
+  <!-- Custom PNG WhatsApp -->
+  <a href="https://wa.me/441234567890" class="widget-btn" aria-label="WhatsApp">
+    <img src="https://i.ibb.co/N2p94R7j/social.png" alt="WhatsApp" style="width:28px;height:28px;border-radius:5%;">
+  </a>
+
+  <!-- Email SVG -->
+  <a href="mailto:sales@greenlightgardensolutions.co.uk" class="widget-btn" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="#4285F4">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    </svg>
+  </a>
+</div>
 </body>
 </html>
